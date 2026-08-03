@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Thiệp Mời Lễ Tốt Nghiệp - Việt Anh</title>
+  <meta name="description" content="Bạn được mời đến dự buổi lễ tốt nghiệp. Mở thư để xem thiệp mời đặc biệt dành riêng cho bạn!">
+  <meta name="theme-color" content="#87CEEB">
+  <meta property="og:title" content="Thiệp Mời Lễ Tốt Nghiệp">
+  <meta property="og:description" content="Bạn được mời đến dự buổi lễ tốt nghiệp. Mở thư để xem thiệp mời!">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts - Vietnamese support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@700;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/graduation-invitation/css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- STATE 1: WELCOME SCREEN - Nhập tên & phong bì               -->
+  <!-- ============================================================ -->
+  <section id="welcome-screen" class="screen active">
+    <!-- Floating background decorations -->
+    <div class="welcome-particles" aria-hidden="true">
+      <span class="particle" style="--delay: 0s; --x: 10%; --size: 1.5rem;">🎓</span>
+      <span class="particle" style="--delay: 1.2s; --x: 85%; --size: 1.2rem;">🎉</span>
+      <span class="particle" style="--delay: 0.6s; --x: 25%; --size: 1rem;">⭐</span>
+      <span class="particle" style="--delay: 2s; --x: 70%; --size: 1.4rem;">🌟</span>
+      <span class="particle" style="--delay: 1.8s; --x: 50%; --size: 1.1rem;">📚</span>
+      <span class="particle" style="--delay: 0.3s; --x: 92%; --size: 1.3rem;">💫</span>
+      <span class="particle" style="--delay: 2.5s; --x: 15%; --size: 1rem;">✨</span>
+      <span class="particle" style="--delay: 1s; --x: 60%; --size: 1.2rem;">🎊</span>
+    </div>
+
+    <div class="welcome-container">
+      <!-- Badge -->
+      <div class="welcome-badge" aria-hidden="true">🎓</div>
+
+      <h1 class="welcome-title">LỄ TỐT NGHIỆP</h1>
+      <p class="welcome-subtitle">Mình có một lời mời dành cho bạn 💌</p>
+
+      <!-- Envelope -->
+      <div class="envelope-wrapper" aria-hidden="true">
+        <div class="envelope" id="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-letter"></div>
+          <div class="envelope-body">
+            <div class="envelope-seal">💌</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Name Input -->
+      <div class="input-group">
+        <label for="guest-name-input" class="sr-only">Tên của bạn</label>
+        <input
+          type="text"
+          id="guest-name-input"
+          class="name-input"
+          placeholder="Nhập tên của bạn..."
+          aria-label="Nhập tên của bạn"
+          autocomplete="name"
+          maxlength="50"
+        >
+        <p id="validation-msg" class="validation-msg" role="alert"></p>
+      </div>
+
+      <!-- CTA Button -->
+      <button id="open-btn" class="open-btn" aria-label="Mở thư mời tốt nghiệp">
+        MỞ THƯ 💌
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- STATE 3: INVITATION SCREEN - Poster thiệp mời               -->
+  <!-- ============================================================ -->
+  <section id="invitation-screen" class="screen">
+    <div class="poster-wrapper">
+      <div class="poster" id="poster">
+
+        <!-- ===== LAYER 0: Shimmer & Sparkles (Hiệu ứng lung linh) ===== -->
+        <div class="poster-shimmer" aria-hidden="true"></div>
+        <div class="poster-sparkles" aria-hidden="true">
+          <span class="sparkle sp-1">✨</span>
+          <span class="sparkle sp-2">⭐</span>
+          <span class="sparkle sp-3">💫</span>
+          <span class="sparkle sp-4">✨</span>
+          <span class="sparkle sp-5">🌟</span>
+        </div>
+
+        <!-- ===== LAYER 1: Background "GRADUATION" text ===== -->
+        <div class="poster-bg-text" aria-hidden="true">
+          <span>GRADUATION</span>
+          <span>GRADUATION</span>
+          <span>GRADUATION</span>
+        </div>
+
+        <!-- ===== LAYER 2: Clouds ===== -->
+        <div class="cloud cloud-1" aria-hidden="true">
+          <svg viewBox="0 0 200 100">
+            <ellipse cx="55" cy="58" rx="42" ry="28" fill="white" opacity="0.95"/>
+            <ellipse cx="100" cy="42" rx="48" ry="33" fill="white" opacity="0.97"/>
+            <ellipse cx="145" cy="55" rx="42" ry="28" fill="white" opacity="0.95"/>
+            <ellipse cx="100" cy="63" rx="58" ry="26" fill="white" opacity="0.98"/>
+          </svg>
+        </div>
+        <div class="cloud cloud-2" aria-hidden="true">
+          <svg viewBox="0 0 180 90">
+            <ellipse cx="50" cy="50" rx="38" ry="25" fill="white" opacity="0.93"/>
+            <ellipse cx="90" cy="38" rx="42" ry="30" fill="white" opacity="0.96"/>
+            <ellipse cx="130" cy="48" rx="38" ry="25" fill="white" opacity="0.93"/>
+            <ellipse cx="90" cy="56" rx="52" ry="23" fill="white" opacity="0.97"/>
+          </svg>
+        </div>
+
+        <!-- ===== LAYER 3: White Poster Backing Card (Thẻ nền trắng phía sau) ===== -->
+        <div class="poster-card-backing">
+          <div class="frame-hole"></div>
+          <!-- Title "HAPPY GRADUATION" on white card -->
+          <div class="poster-title">
+            <span class="title-happy">HAPPY</span>
+            <span class="title-graduation">GRADUATION</span>
+          </div>
+        </div>
+
+        <!-- ===== LAYER 4: Photo Layer (Ảnh nhân vật phông trong suốt - NỔI TRÊN THẺ) ===== -->
+        <div class="poster-photo-layer">
+          <img
+            src="/anh viet anh.png"
+            alt="Ảnh tốt nghiệp của sinh viên"
+            class="graduate-photo"
+            id="graduate-photo"
+            loading="eager"
+            onerror="this.onerror=null; this.src='/anh viet anh.png';"
+          >
+        </div>
+
+        <!-- ===== LAYER 5: Graduation Cap ===== -->
+        <div class="grad-cap" aria-hidden="true">
+          <svg viewBox="0 0 140 90" fill="none">
+            <!-- Board (top) -->
+            <polygon points="70,5 135,32 70,58 5,32" fill="#1a1a2e"/>
+            <!-- Base (bottom part) -->
+            <path d="M35,40 Q35,65 70,65 Q105,65 105,40 L70,55 Z" fill="#16213e"/>
+            <!-- Tassel string -->
+            <line x1="70" y1="32" x2="110" y2="18" stroke="#B71C1C" stroke-width="3" stroke-linecap="round"/>
+            <!-- Tassel knot -->
+            <circle cx="110" cy="16" r="5" fill="#C62828"/>
+            <!-- Tassel hanging -->
+            <rect x="107" y="21" width="6" height="22" rx="3" fill="#C62828"/>
+          </svg>
+        </div>
+
+        <!-- ===== LAYER 6: Light Bulb ===== -->
+        <div class="light-bulb" aria-hidden="true">
+          <svg viewBox="0 0 60 75" fill="none">
+            <!-- Rays -->
+            <line x1="30" y1="2" x2="30" y2="11" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="8" y1="28" x2="15" y2="28" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="52" y1="28" x2="45" y2="28" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="13" y1="12" x2="18" y2="17" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="47" y1="12" x2="42" y2="17" stroke="#FFC107" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Bulb body -->
+            <circle cx="30" cy="32" r="15" fill="#FFEB3B"/>
+            <circle cx="30" cy="32" r="15" fill="url(#bulbGlow)" opacity="0.6"/>
+            <!-- Bulb base -->
+            <rect x="23" y="47" width="14" height="7" fill="#BDBDBD" rx="2"/>
+            <rect x="25" y="54" width="10" height="4" fill="#9E9E9E" rx="1"/>
+            <!-- Glow gradient -->
+            <defs>
+              <radialGradient id="bulbGlow">
+                <stop offset="0%" stop-color="#FFF9C4"/>
+                <stop offset="100%" stop-color="#FFEB3B" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- ===== LAYER 7: Trees / Greenery ===== -->
+        <div class="tree tree-left" aria-hidden="true">
+          <svg viewBox="0 0 130 170" fill="none">
+            <rect x="52" y="105" width="18" height="50" fill="#5D4037" rx="4"/>
+            <circle cx="62" cy="70" r="48" fill="#43A047"/>
+            <circle cx="35" cy="58" r="30" fill="#2E7D32"/>
+            <circle cx="88" cy="62" r="33" fill="#388E3C"/>
+            <circle cx="60" cy="42" r="26" fill="#66BB6A"/>
+            <circle cx="42" cy="80" r="22" fill="#4CAF50"/>
+          </svg>
+        </div>
+        <div class="tree tree-right" aria-hidden="true">
+          <svg viewBox="0 0 130 170" fill="none">
+            <rect x="55" y="110" width="16" height="45" fill="#5D4037" rx="4"/>
+            <circle cx="63" cy="72" r="45" fill="#4CAF50"/>
+            <circle cx="40" cy="62" r="28" fill="#388E3C"/>
+            <circle cx="86" cy="65" r="30" fill="#43A047"/>
+            <circle cx="62" cy="45" r="24" fill="#66BB6A"/>
+            <circle cx="80" cy="80" r="20" fill="#2E7D32"/>
+          </svg>
+        </div>
+
+        <!-- Grass strip at bottom -->
+        <div class="grass" aria-hidden="true">
+          <svg viewBox="0 0 500 70" preserveAspectRatio="none">
+            <ellipse cx="250" cy="45" rx="300" ry="40" fill="#43A047"/>
+            <ellipse cx="120" cy="50" rx="150" ry="35" fill="#388E3C"/>
+            <ellipse cx="380" cy="50" rx="150" ry="35" fill="#2E7D32"/>
+            <ellipse cx="250" cy="55" rx="260" ry="30" fill="#4CAF50"/>
+          </svg>
+        </div>
+
+        <!-- ===== LAYER 8: Event Info (bottom left) ===== -->
+        <div class="event-info">
+          <p class="event-time" id="event-time"></p>
+          <p class="event-date" id="event-date"></p>
+          <p class="event-location" id="event-location"></p>
+          <p class="event-address" id="event-address"></p>
+        </div>
+
+        <!-- ===== LAYER 9: Invitation Note (bottom right) ===== -->
+        <div class="invitation-note">
+          <div class="note-pin" aria-hidden="true"></div>
+          <div class="note-lines" aria-hidden="true"></div>
+          <div class="note-content">
+            <p class="note-label">Thân mời:</p>
+            <div class="guest-name-wrapper">
+              <p class="guest-name" id="guest-name-display"></p>
+            </div>
+            <p class="note-text">
+              đến dự buổi lễ tốt
+              <br>nghiệp của <span id="graduate-name-text" class="graduate-name-inline"></span>.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /.poster -->
+    </div><!-- /.poster-wrapper -->
+
+    <!-- Action Buttons (below poster) -->
+    <div class="action-buttons" id="action-buttons">
+      <button id="share-btn" class="action-btn" aria-label="Chia sẻ thiệp mời">
+        💌 Chia sẻ thiệp
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AUDIO                                                        -->
+  <!-- ============================================================ -->
+  <audio id="bg-music" loop preload="none">
+    <source src="assets/music/graduation.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="music-toggle" class="music-btn hidden" aria-label="Bật/tắt nhạc nền">
+    <span class="music-icon">🔇</span>
+  </button>
+
+  <!-- ============================================================ -->
+  <!-- CONFETTI CANVAS                                              -->
+  <!-- ============================================================ -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="/graduation-invitation/js/script.js"></script>
+</body>
+</html>
