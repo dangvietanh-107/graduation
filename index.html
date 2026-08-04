@@ -1574,7 +1574,7 @@ function setupPosterTilt() {
 function validateName() {
   const name = sanitizeName(DOM.nameInput.value);
   if (!name || name.length === 0) {
-    showValidation("Bạn chưa cho mình biết tên nè 💌");
+    showValidation("Nhập tên vào ngay!");
     DOM.nameInput.classList.add("error");
     DOM.nameInput.focus();
     return false;
