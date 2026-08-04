@@ -782,13 +782,13 @@ body {
   line-height: 1.3;
 }
 
-/* ====================== INVITATION NOTE (TÊN KHÁCH MỜI SIÊU TO & NỔI BẬT) ====================== */
+/* ====================== INVITATION NOTE ====================== */
 .invitation-note {
   position: absolute;
-  bottom: 4.5%;
-  right: 2.5%;
-  width: 58%; /* Mở rộng thẻ thiệp để có không gian cho chữ siêu to */
-  padding: 8% 6% 6%;
+  bottom: 5.5%;
+  right: 3.5%;
+  width: 45%;
+  padding: 9% 7% 7%;
   background: var(--cream);
   border-radius: 6px;
   transform: rotate(3deg);
@@ -872,9 +872,8 @@ body {
 .guest-name {
   font-family: var(--font-handwriting);
   font-weight: 700;
-  /* KÍCH THƯỚC CHỮ SIÊU TO NỔI BẬT */
-  font-size: clamp(1.8rem, 8vw, 3rem) !important;
-  color: #061830 !important;
+  font-size: clamp(1.45rem, 6.2vw, 2.35rem);
+  color: var(--navy);
   line-height: 1.1;
   word-break: break-word;
   padding: 3px 8px;
@@ -936,11 +935,10 @@ body {
   transform: translateY(0);
 }
 
-/* ====================== MUSIC BUTTON ====================== */
-.music-btn {
+/* ====================== FLOATING BUTTONS ====================== */
+.music-btn, .fireworks-btn {
   position: fixed;
   bottom: 20px;
-  right: 20px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -958,7 +956,15 @@ body {
   transition: all 0.3s ease;
 }
 
-.music-btn:hover {
+.music-btn {
+  right: 20px;
+}
+
+.fireworks-btn {
+  right: 74px;
+}
+
+.music-btn:hover, .fireworks-btn:hover {
   background: var(--white);
   transform: scale(1.1);
 }
@@ -1340,6 +1346,11 @@ body {
     <span class="music-icon">🔇</span>
   </button>
 
+  <!-- Fireworks Button -->
+  <button id="fireworks-btn" class="fireworks-btn" aria-label="Bắn pháo hoa">
+    🎆
+  </button>
+
   <!-- ============================================================ -->
   <!-- CONFETTI CANVAS                                              -->
   <!-- ============================================================ -->
@@ -1504,6 +1515,15 @@ function bindEvents() {
   // Share button
   DOM.shareBtn.addEventListener("click", handleShare);
 
+  // Fireworks button
+  const fireworksBtn = document.getElementById("fireworks-btn");
+  if (fireworksBtn) {
+    fireworksBtn.addEventListener("click", () => {
+      if (!confetti) confetti = new ConfettiEngine(DOM.confettiCanvas);
+      confetti.fireworks(4000);
+    });
+  }
+
   // Music toggle
   DOM.musicToggle.addEventListener("click", toggleMusic);
 }
@@ -1644,23 +1664,18 @@ function setGuestName(name) {
   fitText(DOM.guestNameDisplay);
 }
 
-// ====================== FIT TEXT (SMART RESIZE WITH LARGE BASE) ======================
+// ====================== FIT TEXT (AUTO RESIZE IF NAME IS TOO LONG) ======================
 function fitText(element) {
   const note = element.closest(".invitation-note");
   if (!note) return;
 
-  const noteContent = note.querySelector(".note-content");
-  const maxWidth = (noteContent ? noteContent.clientWidth : note.clientWidth) * 0.95;
-
-  // Reset to default CSS size first
+  const maxWidth = note.clientWidth * 0.88;
   element.style.fontSize = "";
 
   requestAnimationFrame(() => {
     let currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-    
-    // Only reduce size if text exceeds container width, keeping text as large as possible
-    while (element.scrollWidth > maxWidth && currentFontSize > 14) {
-      currentFontSize -= 1;
+    while (element.scrollWidth > maxWidth && currentFontSize > 11) {
+      currentFontSize -= 0.5;
       element.style.fontSize = currentFontSize + "px";
     }
   });
@@ -1709,6 +1724,66 @@ class ConfettiEngine {
     }
   }
 
+  createFireworks(count = 100) {
+    const colors = [
+      "#FFD700", "#FF4081", "#448AFF", "#1DE9B6", "#FFAB00", "#E040FB"
+    ];
+    
+    // Left side launcher
+    for (let i = 0; i < count / 2; i++) {
+      this.particles.push({
+        x: 0,
+        y: this.canvas.height,
+        w: Math.random() * 11 + 4,
+        h: Math.random() * 7 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: -(Math.random() * 8 + 8), // Shoot up fast
+        drift: Math.random() * 5 + 2, // Shoot inwards to right
+        gravity: 0.25, // Add gravity to speed in animate()
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.2,
+        opacity: 1,
+        wobble: 0,
+        wobbleSpeed: 0
+      });
+    }
+    
+    // Right side launcher
+    for (let i = 0; i < count / 2; i++) {
+      this.particles.push({
+        x: this.canvas.width,
+        y: this.canvas.height,
+        w: Math.random() * 11 + 4,
+        h: Math.random() * 7 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: -(Math.random() * 8 + 8), // Shoot up fast
+        drift: -(Math.random() * 5 + 2), // Shoot inwards to left
+        gravity: 0.25,
+        angle: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.2,
+        opacity: 1,
+        wobble: 0,
+        wobbleSpeed: 0
+      });
+    }
+  }
+
+  fireworks(duration = 4000) {
+    this.createFireworks();
+    if (!this.isRunning) {
+      this.isRunning = true;
+      this.animate();
+    }
+    
+    // Create secondary bursts
+    setTimeout(() => { this.createFireworks(60); }, 500);
+    setTimeout(() => { this.createFireworks(80); }, 1200);
+
+    setTimeout(() => {
+      this.isRunning = false;
+    }, duration);
+  }
+
   start(duration = 4500) {
     this.particles = [];
     this.createParticles();
@@ -1733,9 +1808,14 @@ class ConfettiEngine {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     this.particles.forEach((p) => {
+      if (p.gravity) {
+        p.speed += p.gravity;
+        p.x += p.drift;
+      } else {
+        p.wobble += p.wobbleSpeed;
+        p.x += Math.sin(p.wobble) * p.drift;
+      }
       p.y += p.speed;
-      p.wobble += p.wobbleSpeed;
-      p.x += Math.sin(p.wobble) * p.drift;
       p.angle += p.spin;
 
       if (!this.isRunning) {
